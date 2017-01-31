@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2>{{selectedContact?.name}}</h2>
+    <div class="flex">
+      <div>
+        <img class="img-responsive"
+             src="{{selectedContact?.imageURL}}"
+             style="max-height: 80px;"/>
+      </div>
+      <div>
+        <a class="btn btn-primary" href="#">Edit</a>
+        <a class="btn btn-danger" href="#">Delete</a>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <h5><b>Email:</b> <span>{{selectedContact?.email}}</span></h5>
+    <h5><b>Phone:</b> <span>{{selectedContact?.phone}}</span></h5>
+  </div>
+</div>
