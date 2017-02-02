@@ -10,6 +10,7 @@ import { ContactDetailComponent } from './contacts/contact-detail/contact-detail
 import { ContactGroupComponent } from './contacts/contact-group/contact-group.component';
 import { ContactListComponent } from './contacts/contact-list/contact-list.component';
 import { ContactItemComponent } from './contacts/contact-list/contact-item.component';
+import { DropdownDirective } from './dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ContactItemComponent } from './contacts/contact-list/contact-item.compo
     ContactDetailComponent,
     ContactGroupComponent,
     ContactListComponent,
-    ContactItemComponent
+    ContactItemComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,
