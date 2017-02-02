@@ -9,6 +9,9 @@
     </div>
   </div>
   <div class="panel-body">
-    <cms-contact-item></cms-contact-item>
+    <!-- modify the <cms-contact-item> tag
+to use an ngFor directive to display a list of all of the contacts in the
+contactGroups array. -->
+    <cms-contact-item [contact]="contact" *ngFor="let contact of contactGroups"></cms-contact-item>
   </div>
 </div>

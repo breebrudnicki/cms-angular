@@ -10,7 +10,7 @@ import { Contact } from './contact';
   styleUrls: ['./contacts.component.css']
 })
 export class ContactsComponent implements OnInit {
-  selectedContact: Contact;
+  selectedContact: Contact = null;
 
   constructor() { }
 
