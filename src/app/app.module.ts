@@ -11,6 +11,7 @@ import { ContactGroupComponent } from './contacts/contact-group/contact-group.co
 import { ContactListComponent } from './contacts/contact-list/contact-list.component';
 import { ContactItemComponent } from './contacts/contact-list/contact-item.component';
 import { DropdownDirective } from './dropdown.directive';
+import { ContactsService } from './contacts/contacts.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { DropdownDirective } from './dropdown.directive';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [ContactsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
