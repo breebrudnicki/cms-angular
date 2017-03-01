@@ -22,6 +22,7 @@ import { routing } from './app.routing';
 import { ContactsService } from './contacts/contacts.service';
 import { MessagesService } from './messages/messages.service';
 import { DocumentsService } from './documents/documents.service';
+import { MessageNewComponent } from './messages/message-new/message-new.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DocumentsService } from './documents/documents.service';
     MessageItemComponent,
     DocumentsComponent,
     DocumentListComponent,
-    DocumentItemComponent
+    DocumentItemComponent,
+    MessageNewComponent
   ],
   imports: [
     BrowserModule,
