@@ -19,6 +19,7 @@ import { MessageItemComponent } from './messages/message-list/message-item.compo
 import { DocumentsComponent } from './documents/documents.component';
 import { DocumentListComponent } from './documents/document-list/document-list.component';
 import { DocumentItemComponent } from './documents/document-list/document-item.component';
+import { routing } from './app.routing';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { DocumentItemComponent } from './documents/document-list/document-item.c
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
   providers: [
     ContactsService,
