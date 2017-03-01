@@ -32,10 +32,10 @@ export class DocumentViewComponent implements OnInit, OnDestroy {
     );
   }
 
-  // onDelete() {
-  //   this.documentsService.deleteDocumet(this.selectedDocument);
-  //   this.router.navigate(['/documents']);
-  // }
+  onDelete() {
+    this.documentsService.deleteDocument(this.document[this.documentIdx]);
+    this.router.navigate(['/documents']);
+  }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
