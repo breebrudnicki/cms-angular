@@ -9,7 +9,7 @@
     <div class="row">
       <div class="col-xs-12">
           <!-- add tag to display a list of message-item components here -->
-          <cms-message-item></cms-message-item>
+          <cms-message-item *ngFor="let message of messages" [message]="message"></cms-message-item>
       </div>
     </div>
   </div>
