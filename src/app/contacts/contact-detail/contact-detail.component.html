@@ -1,20 +1,36 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h2>{{selectedContact?.name}}</h2>
-    <div class="flex">
-      <div>
-        <img class="img-responsive"
-             src="{{selectedContact?.imageURL}}"
-             style="max-height: 80px;"/>
+    <h3>{{contact?.name}}</h3>
+    <div class="row pad-all">
+      <div class="clear-fix pull-left">
+        <img class="img-responsive" src="{{contact?.imageUrl}}" style="max-height: 80px;"/>
       </div>
-      <div>
-        <a class="btn btn-primary" href="#">Edit</a>
-        <a class="btn btn-danger" href="#">Delete</a>
+      <div class="pull-right" style="margin-top: 2rem; ">
+        <button class="btn btn-primary" [routerLink]="['../edit']">Edit</button>
+        <button class="btn btn-danger" (click)="onDelete()">Delete</button>
       </div>
     </div>
   </div>
+
   <div class="panel-body">
-    <h5><b>Email:</b> <span>{{selectedContact?.email}}</span></h5>
-    <h5><b>Phone:</b> <span>{{selectedContact?.phone}}</span></h5>
+    <div class="pad-left-right">
+      <div class="row" *ngIf="contact?.email">
+        <label>Email:</label>
+        <span class="label-value">{{contact?.email}}</span>
+      </div>
+
+      <div class="row" *ngIf="contact?.phone">
+        <label>Phone:</label>
+        <span class="label-value">{{contact?.phone}}</span>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="contactGroup && contactGroup.length > 0">
+      <label for="groupContacts" style="margin-left: 1rem;">Group contacts:</label>
+      <div class="col-xs-12" id="groupContacts">
+        <cms-contact-group-item *ngFor="let contact of contactGroup" [contact]="contact"></cms-contact-group-item>
+      </div>
+    </div>
+
   </div>
 </div>

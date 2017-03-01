@@ -1,15 +1,8 @@
 <div class="row">
   <div class="col-md-5">
-    <cms-contact-list (selectedContactEmitter)="selectedContact = $event"></cms-contact-list>
+    <cms-contact-list></cms-contact-list>
   </div>
-  <div class="col-md-4"  *ngIf="selectedContact !== null">
-    <!--Add the ngIf directive to <cms-contact-detail> tag to insert the
-contact-list component into to the document when the selected
-contact’s group property is null. -->
-    <cms-contact-detail [selectedContact]="selectedContact" *ngIf="selectedContact.group === null"></cms-contact-detail>
-    <!--Add the ngIf directive to <cms-contact-group> tag to insert the
-contact-group component into to the document when the selected
-contact’s group property is not null.-->
-    <cms-contact-group [selectedContact]="selectedContact" *ngIf="selectedContact.group !== null"></cms-contact-group>
+  <div class="col-md-4">
+    <router-outlet class="fill"></router-outlet>
   </div>
 </div>
