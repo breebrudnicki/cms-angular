@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/RX';
 import { Document } from '../document';
 import { DocumentsService } from '../documents.service';
@@ -19,7 +19,9 @@ export class DocumentViewComponent implements OnInit, OnDestroy {
   private documentIdx: number;
   document: Document;
 
-  constructor( private documentsService: DocumentsService, private route: ActivatedRoute) { }
+  constructor( private documentsService: DocumentsService,
+               private route: ActivatedRoute,
+               private router: Router) { }
 
   ngOnInit() {
     this.subscription = this.route.params.subscribe(
@@ -29,6 +31,11 @@ export class DocumentViewComponent implements OnInit, OnDestroy {
       }
     );
   }
+
+  // onDelete() {
+  //   this.documentsService.deleteDocumet(this.selectedDocument);
+  //   this.router.navigate(['/documents']);
+  // }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
