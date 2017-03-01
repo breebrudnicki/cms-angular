@@ -6,14 +6,17 @@ import { MOCKDOCUMENTS } from './MOCKDOCUMENTS'
 export class DocumentsService {
 
   private documents: Document[] = [];
-  private mockDocuments = MOCKDOCUMENTS;
 
   constructor() { }
 
   getDocuments() {
 
-    this.documents = this.mockDocuments;
-    return this.documents;
+    // In side this function,
+    // assign the value of the MOCKDOCUMNETS variable in the
+    // MOCKDOCUMNETS.ts file to the documents class variable in the
+    // DocumentsService class.
+
+    return this.documents = MOCKDOCUMENTS;
 
   }
 

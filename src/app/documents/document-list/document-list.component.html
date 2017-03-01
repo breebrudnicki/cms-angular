@@ -8,7 +8,7 @@
   <div class="panel-body">
     <div class="center-panel">
       <!-- add tag to display a list of document-item components here -->
-      <cms-document-item></cms-document-item>
+      <cms-document-item *ngFor="let document of documents" [document]="document"></cms-document-item>
     </div>
   </div>
 </div>

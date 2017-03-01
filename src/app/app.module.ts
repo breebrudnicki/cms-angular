@@ -11,8 +11,6 @@ import { ContactGroupComponent } from './contacts/contact-group/contact-group.co
 import { ContactListComponent } from './contacts/contact-list/contact-list.component';
 import { ContactItemComponent } from './contacts/contact-list/contact-item.component';
 import { DropdownDirective } from './dropdown.directive';
-import { ContactsService } from './contacts/contacts.service';
-import { MessagesService } from './messages/messages.service';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageListComponent } from './messages/message-list/message-list.component';
 import { MessageItemComponent } from './messages/message-list/message-item.component';
@@ -20,6 +18,10 @@ import { DocumentsComponent } from './documents/documents.component';
 import { DocumentListComponent } from './documents/document-list/document-list.component';
 import { DocumentItemComponent } from './documents/document-list/document-item.component';
 import { routing } from './app.routing';
+
+import { ContactsService } from './contacts/contacts.service';
+import { MessagesService } from './messages/messages.service';
+import { DocumentsService } from './documents/documents.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { routing } from './app.routing';
   ],
   providers: [
     ContactsService,
-    MessagesService],
+    MessagesService,
+    DocumentsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
