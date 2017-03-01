@@ -22,6 +22,7 @@ import { routing } from './app.routing';
 import { ContactsService } from './contacts/contacts.service';
 import { MessagesService } from './messages/messages.service';
 import { DocumentsService } from './documents/documents.service';
+import { WindRefService } from './wind-ref.service';
 import { MessageNewComponent } from './messages/message-new/message-new.component';
 import { DocumentViewComponent } from './documents/document-view/document-view.component';
 import { DocumentEditComponent } from './documents/document-edit/document-edit.component';
@@ -55,7 +56,8 @@ import { DocumentEditComponent } from './documents/document-edit/document-edit.c
   providers: [
     ContactsService,
     MessagesService,
-    DocumentsService],
+    DocumentsService,
+    WindRefService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

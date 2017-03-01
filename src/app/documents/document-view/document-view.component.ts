@@ -3,11 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/RX';
 import { Document } from '../document';
 import { DocumentsService } from '../documents.service';
-
-// You also need to get references to instances of the
-// DocumentsService, Router and ActivatedRoute services.
-// Modify the constructor() function and use dependency injection to
-// get a references to these three services
+import { WindRefService } from '../../wind-ref.service';
 
 @Component({
   selector: 'cms-document-view',
@@ -18,10 +14,14 @@ export class DocumentViewComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   private documentIdx: number;
   document: Document;
+  nativeWindow: any;
 
   constructor( private documentsService: DocumentsService,
                private route: ActivatedRoute,
-               private router: Router) { }
+               private router: Router,
+               private windRef: WindRefService) {
+    this.nativeWindow = windRef.getNativeWindow();
+  }
 
   ngOnInit() {
     this.subscription = this.route.params.subscribe(
@@ -30,6 +30,12 @@ export class DocumentViewComponent implements OnInit, OnDestroy {
         this.document = this.documentsService.getDocument(this.documentIdx);
       }
     );
+  }
+
+  onView() {
+    var url = this.document.url;
+    var docName = this.document.name;
+    this.nativeWindow.open(url, docName);
   }
 
   onDelete() {
