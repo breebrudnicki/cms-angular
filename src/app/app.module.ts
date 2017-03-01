@@ -23,6 +23,8 @@ import { ContactsService } from './contacts/contacts.service';
 import { MessagesService } from './messages/messages.service';
 import { DocumentsService } from './documents/documents.service';
 import { MessageNewComponent } from './messages/message-new/message-new.component';
+import { DocumentViewComponent } from './documents/document-view/document-view.component';
+import { DocumentEditComponent } from './documents/document-edit/document-edit.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { MessageNewComponent } from './messages/message-new/message-new.componen
     DocumentsComponent,
     DocumentListComponent,
     DocumentItemComponent,
-    MessageNewComponent
+    MessageNewComponent,
+    DocumentViewComponent,
+    DocumentEditComponent
   ],
   imports: [
     BrowserModule,
