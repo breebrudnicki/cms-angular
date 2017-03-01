@@ -10,18 +10,11 @@ export class DocumentsService {
   constructor() { }
 
   getDocuments() {
-
-    // In side this function,
-    // assign the value of the MOCKDOCUMNETS variable in the
-    // MOCKDOCUMNETS.ts file to the documents class variable in the
-    // DocumentsService class.
-
     return this.documents = MOCKDOCUMENTS;
-
   }
 
   getDocument(idx: number) {
-
+    return this.documents[idx];
   }
 
 }

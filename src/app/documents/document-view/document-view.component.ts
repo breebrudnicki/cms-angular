@@ -1,15 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs/RX';
+import { Document } from '../document';
+import { DocumentsService } from '../documents.service';
+
+// You also need to get references to instances of the
+// DocumentsService, Router and ActivatedRoute services.
+// Modify the constructor() function and use dependency injection to
+// get a references to these three services
 
 @Component({
   selector: 'cms-document-view',
   templateUrl: './document-view.component.html',
   styleUrls: ['./document-view.component.css']
 })
-export class DocumentViewComponent implements OnInit {
+export class DocumentViewComponent implements OnInit, OnDestroy {
+  private subscription: Subscription;
+  private documentIdx: number;
+  document: Document;
 
-  constructor() { }
+  constructor( private documentsService: DocumentsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.subscription = this.route.params.subscribe(
+      (params: any) => {
+        this.documentIdx = params['idx'];
+        this.document = this.documentsService.getDocument(this.documentIdx);
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }
