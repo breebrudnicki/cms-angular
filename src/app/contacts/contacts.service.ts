@@ -67,7 +67,7 @@ export class ContactsService {
 
   getContact(idx: number) {
     //gets the index of a Contact object
-
+    return this.contacts[idx];
     //returns the Contact object at the specified index
   }
 
