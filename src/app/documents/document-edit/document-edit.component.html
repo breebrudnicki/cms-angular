@@ -1,11 +1,7 @@
-<p>
-  document-edit works!
-</p>
-
 <div class="panel panel-default">
   <div class="panel-body">
 
-    <form id="document-edit">
+    <form id="document-edit" (ngSubmit)="onSubmit(f.value)" #f="ngForm">
       <div class="row">
 
         <div class="col-sm-12 form-group">
@@ -15,8 +11,16 @@
             id="name"
             class="form-control"
             size="120"
-            max="120">
+            max="120"
+            [ngModel]="oldDocument?.name"
+            name="name"
+            required
+            #docTitle="ngModel">
+            <div class="alert alert-danger" *ngIf="!docTitle.valid && docTitle.dirty">
+              Don't forget a title!
+            </div>
         </div>
+
 
         <div class="col-sm-12 form-group">
           <label for="description">Document description</label>
@@ -25,7 +29,9 @@
             id="description"
             class="form-control"
             size="120"
-            max="255">
+            max="255"
+            [ngModel]='oldDocument?.description'
+            name="description">
         </div>
 
         <div class="col-sm-12 form-group">
@@ -35,8 +41,16 @@
             id="documentUrl"
             class="form-control"
             size="150"
-            max="255">
+            max="255"
+            [ngModel]='oldDocument?.url'
+            name="url"
+            required
+            #docUrl="ngModel">
+            <div class="alert alert-danger" *ngIf="!docUrl.valid && docUrl.dirty">
+              Invalid Url
+            </div>
         </div>
+
       </div>
 
       <div class="row">
