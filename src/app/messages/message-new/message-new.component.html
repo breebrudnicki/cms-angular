@@ -19,7 +19,7 @@
       </div>
 
     </div>
-    <div class="alert alert-danger" *ngIf="!message.valid && message.dirty">
+    <div class="alert alert-danger" *ngIf="!message.valid && (message.dirty || message.touched)">
       <p>Message is invalid.</p>
     </div>
 
