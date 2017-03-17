@@ -19,4 +19,8 @@ export class MessagesService {
     // This function is to return the Message object stored in the position specified in the idx variable
   }
 
+  addMessage(message: Message) {
+    this.messages.push(message);
+  }
+
 }

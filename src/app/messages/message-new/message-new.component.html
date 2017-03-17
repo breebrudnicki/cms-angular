@@ -1,8 +1,6 @@
-<p>Message New Works</p>
-
 <div class="col-xs-12">
 
-  <form id="message-add" >
+  <form id="message-add" (ngSubmit)="onSubmit(f.value)" #f="ngForm">
     <div class="row">
 
       <div class="col-sm-12 form-group">
@@ -13,14 +11,21 @@
           required
           class="form-control"
           size="120"
-          max="255">
+          max="255"
+          [ngModel]="message.text"
+          name="message"
+          required
+          #message="ngModel">
       </div>
 
+    </div>
+    <div class="alert alert-danger" *ngIf="!message.valid && message.dirty">
+      <p>Message is invalid.</p>
     </div>
 
     <div class="row">
       <div class="col-xs-12">
-        <button class="btn btn-success" type="submit">Send</button>
+        <button class="btn btn-success" type="submit" [disabled]="!f.valid">Send</button>
         <button class="btn btn-primary" type="button" (click)="onCancel()">Cancel</button>
       </div>
     </div>

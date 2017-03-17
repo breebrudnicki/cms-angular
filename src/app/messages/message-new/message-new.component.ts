@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MessagesService } from '../messages.service';
+import { ContactsService } from '../../contacts/contacts.service';
+import { Router } from '@angular/router';
+import { Contact } from '../../contacts/contact';
+import { Message } from '../message';
 
 @Component({
   selector: 'cms-message-new',
@@ -7,9 +12,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageNewComponent implements OnInit {
 
-  constructor() { }
+  sender: Contact;
+
+  constructor(private messagesService: MessagesService,
+              private contactsService: ContactsService,
+              private router: Router) {
+    this.sender = contactsService.getCurrentContact();
+  }
 
   ngOnInit() {
   }
 
+  onSubmit(value) {
+    const newMessage = new Message(15, "", value.message, this.sender.name, );
+    this.messagesService.addMessage(newMessage);
+    this.router.navigate(['messages']);
+  }
+
+  onCancel() {
+    this.router.navigate(['messages']);
+  }
 }

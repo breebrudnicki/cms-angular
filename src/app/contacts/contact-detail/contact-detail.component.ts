@@ -19,7 +19,6 @@ export class ContactDetailComponent implements OnInit, OnDestroy {
   constructor(private contactsService: ContactsService,
               private route: ActivatedRoute,
               private router: Router) { }
-
   ngOnInit() {
     this.subscription = this.route.params.subscribe(
       (params: any) => {

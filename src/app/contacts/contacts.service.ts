@@ -5,6 +5,16 @@ export class ContactsService {
 
   private contacts: Contact[] = [
   ];
+  currentContact: Contact;
+
+  constructor() {
+    // this.contacts = this.initContacts();
+    this.currentContact = new Contact('21', "Bree Carrick", "car14012@byui.edu", "270-1860", "../../images/bree.jpg", null);
+  }
+
+  getCurrentContact() {
+    return this.currentContact;
+  }
 
   getContacts() {
     // individual contacts
@@ -62,8 +72,6 @@ export class ContactsService {
     return 0;
 
   }
-
-  constructor() { }
 
   getContact(idx: number) {
     //gets the index of a Contact object
