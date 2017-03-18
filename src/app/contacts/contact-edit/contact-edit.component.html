@@ -69,7 +69,8 @@
         </div>
 
         <div class="row" id="groupList"
-             style="min-height: 3rem;">
+             style="min-height: 3rem;"
+             dnd-droppable [dropZones]="['demo-1']" (onDropSuccess)="addToGroup($event)">
           <div *ngFor="let contact of groupContacts; let i = index">
             <div>
               <cms-contact-group-item class="col-sm-11" [contact]="contact"></cms-contact-group-item>

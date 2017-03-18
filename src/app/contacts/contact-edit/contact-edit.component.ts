@@ -66,4 +66,39 @@ export class ContactEditComponent implements OnInit {
     this.router.navigate(['contacts']);
   }
 
+  isInvalidContact(newContact: Contact) {
+    if ( !newContact ) {
+      return true;
+    }
+    if ( newContact.contactID === this.contact.contactID ) {
+      return true;
+    }
+
+    for (let i = 0; i < this.groupContacts.length; i++) {
+      if ( newContact.contactID === this.groupContacts[i].contactID ) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  addToGroup($event: any) {
+    let selectedContact: Contact = $event.dragData;
+    this.invalidGroupContact = this.isInvalidContact(selectedContact);
+    if ( this.invalidGroupContact ) {
+      return;
+    }
+    this.groupContacts.push(selectedContact);
+    this.invalidGroupContact = false;
+  }
+
+  onRemoveItem(idx: number) {
+    if ( idx < 0 || idx >= this.groupContacts.length ) {
+      return;
+    }
+
+    this.groupContacts.splice(idx, 1);
+    this.invalidGroupContact = false;
+  }
+
 }
