@@ -27,6 +27,7 @@ import { DocumentViewComponent } from './documents/document-view/document-view.c
 import { DocumentEditComponent } from './documents/document-edit/document-edit.component';
 import { ContactGroupItemComponent } from './contacts/contact-group-item.component';
 import { ContactEditComponent } from './contacts/contact-edit/contact-edit.component';
+import { DndModule } from 'ng2-dnd';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { ContactEditComponent } from './contacts/contact-edit/contact-edit.compo
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    DndModule.forRoot()
   ],
   providers: [
     ContactsService,
