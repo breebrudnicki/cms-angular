@@ -12,8 +12,53 @@ export class ContactsService {
     this.currentContact = new Contact('21', "Bree Carrick", "car14012@byui.edu", "270-1860", "../../images/bree.jpg", null);
   }
 
+  addContact(contact: Contact) {
+    if (!contact) {
+      return;
+    }
+    this.contacts.push(contact);
+    this.contacts = this.contacts.sort(this.compareNames);
+  }
+
+  updateContact(oldContact: Contact, newContact: Contact) {
+    if ( !oldContact || !newContact ) {
+      return;
+    }
+    this.contacts[this.contacts.indexOf(oldContact)] = newContact;
+    this.contacts = this.contacts.sort(this.compareNames);
+  }
+
+  deleteContact(contact: Contact) {
+    if (!contact) {
+      return;
+    }
+    const pos = this.contacts.indexOf(contact);
+    if ( pos < 0 ) {
+      return;
+    }
+
+    this.contacts.splice(pos, 1);
+    this.contacts = this.contacts.sort(this.compareNames);
+  }
+
   getCurrentContact() {
     return this.currentContact;
+  }
+
+  compareNames(contactA: Contact, contactB: Contact) {
+
+    if (contactA.name < contactB.name)
+      return -1;
+    if (contactA.name > contactB.name)
+      return 1;
+    return 0;
+
+  }
+
+  getContact(idx: number) {
+    //gets the index of a Contact object
+    return this.contacts[idx];
+    //returns the Contact object at the specified index
   }
 
   getContacts() {
@@ -61,22 +106,6 @@ export class ContactsService {
     this.contacts = this.contacts.sort(this.compareNames);
 
     return this.contacts;
-  }
-
-  compareNames(contactA: Contact, contactB: Contact) {
-
-    if (contactA.name < contactB.name)
-      return -1;
-    if (contactA.name > contactB.name)
-      return 1;
-    return 0;
-
-  }
-
-  getContact(idx: number) {
-    //gets the index of a Contact object
-    return this.contacts[idx];
-    //returns the Contact object at the specified index
   }
 
 }
