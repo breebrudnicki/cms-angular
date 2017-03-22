@@ -33,4 +33,9 @@ export class ContactDetailComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  onDelete() {
+    this.contactsService.deleteContact(this.contact);
+    this.router.navigate(['/contacts']);
+  }
+
 }
