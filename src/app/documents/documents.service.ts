@@ -48,7 +48,7 @@ export class DocumentsService {
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
-    return this.http.put('https://briannacarrick-ng-cms.firebaseio.com/documents.json', body, {headers: headers}).toPromise;
+    return this.http.put('https://briannacarrick-ng-cms.firebaseio.com/documents.json', body, {headers: headers}).subscribe((content)=>console.log(content), (err)=>console.log(err));
   }
 
   initDocuments() {
