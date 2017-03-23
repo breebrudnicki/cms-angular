@@ -24,7 +24,7 @@ export class MessageNewComponent implements OnInit {
   }
 
   onSubmit(value) {
-    const newMessage = new Message(15, "", value.message, this.sender.name, );
+    const newMessage = new Message(15, "", this.sender.name, value.message);
     this.messagesService.addMessage(newMessage);
     this.router.navigate(['messages']);
   }

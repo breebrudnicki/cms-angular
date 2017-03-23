@@ -1,13 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Contact } from './contact';
+import { Http, Response, Headers } from '@angular/http';
+import 'rxjs/Rx';
+
 @Injectable()
 export class ContactsService {
 
   private contacts: Contact[] = [
   ];
   currentContact: Contact;
+  getContactsEmitter = new EventEmitter<Contact[]>();
 
-  constructor() {
+  constructor(private http: Http) {
     // this.contacts = this.initContacts();
     this.currentContact = new Contact(21, "Bree Carrick", "car14012@byui.edu", "270-1860", "../../images/bree.jpg", null);
   }
@@ -61,7 +65,7 @@ export class ContactsService {
     //returns the Contact object at the specified index
   }
 
-  getContacts() {    
+  getContacts() {
     // individual contacts
     this.contacts[0] = new Contact(1, "Rex Barzee", "barzeer@byui.edu", "208-496-3768",
       "../../images/barzeer.jpg", null);
@@ -106,6 +110,25 @@ export class ContactsService {
     this.contacts = this.contacts.sort(this.compareNames);
 
     return this.contacts;
+  }
+
+  storeContacts() {
+    const body = JSON.stringify(this.contacts);
+    const headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    return this.http.put('https://briannacarrick-ng-cms.firebaseio.com/contacts.json', body, {headers: headers}).subscribe((content)=>console.log(content), (err)=>console.log(err));
+  }
+
+  initContacts() {
+    return this.http.get('https://briannacarrick-ng-cms.firebaseio.com/contacts.json')
+      .map((response: Response) => response.json())
+      .subscribe(
+        (data: Contact[]) => {
+          this.contacts = data;
+          this.getContactsEmitter.emit(this.contacts);
+        }
+      );
   }
 
 }
