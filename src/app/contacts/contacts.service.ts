@@ -22,6 +22,7 @@ export class ContactsService {
     }
     this.contacts.push(contact);
     this.contacts = this.contacts.sort(this.compareNames);
+    this.storeContacts();
   }
 
   updateContact(oldContact: Contact, newContact: Contact) {
@@ -30,6 +31,7 @@ export class ContactsService {
     }
     this.contacts[this.contacts.indexOf(oldContact)] = newContact;
     this.contacts = this.contacts.sort(this.compareNames);
+    this.storeContacts();
   }
 
   deleteContact(contact: Contact) {
@@ -43,6 +45,7 @@ export class ContactsService {
 
     this.contacts.splice(pos, 1);
     this.contacts = this.contacts.sort(this.compareNames);
+    this.storeContacts();
   }
 
   getCurrentContact() {
@@ -63,6 +66,10 @@ export class ContactsService {
     //gets the index of a Contact object
     return this.contacts[idx];
     //returns the Contact object at the specified index
+  }
+
+  getContactById(id:string) {
+    return this.contacts.find((contact: Contact) => contact.contactID.toString() === id);
   }
 
   getContacts() {
@@ -126,6 +133,8 @@ export class ContactsService {
       .subscribe(
         (data: Contact[]) => {
           this.contacts = data;
+          this.currentContact = this.getContactById("7");
+          this.contacts.sort(this.compareNames);
           this.getContactsEmitter.emit(this.contacts);
         }
       );
